@@ -201,6 +201,47 @@ Unimplemented Features
 ====
 The node DDP client does not implement ordered collections, something that while in the DDP spec has not been implemented in Meteor yet.
 
+Multiple Instance Mode
+======================
+
+If you are going to use DDP in multiple detached processes, you can create an IPC connection between processes and use single DDP websocket for all.
+
+Parent process
+```js
+
+//assuming that you initiated your DDP
+ddpClient.socket.on("message", function(event) {
+      ipc.server.emit(socket, "ddp-socket-message", event.data);
+});
+
+//assuming you're using IPC between processes
+ipc.server.on(
+  'ddp-socket-message',
+  function(data,socket){
+      ddpClient._send(data);
+  }
+);
+```
+
+Child process
+```js
+var ddpClient = new DDPClient({ 
+  sharedSocketMode: true,
+  idPrefix: "app-2-"
+});
+
+ddpClient.on("socket-send", function(data){
+  //send your message to master ddp here (e.g. with node-ipc)
+  ipc.of["my-ipc"].emit("ddp-socket-message", data); //example call to ipc
+});
+
+
+ipc.of["my-ipc"].on("ddp-socket-message", (msg) => { //example callback from ipc
+  ddpClient._message(msg);
+});
+```
+
+
 Thanks
 ======
 

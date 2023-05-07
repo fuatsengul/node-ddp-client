@@ -1,3 +1,7 @@
+0.13.0 - 2023-05-07
+  - This version is exposing internal websocket so multiple instances can use one common websocket, enable sharedSocketMode and do not call connect. No need to define url, port, server etc in child instances.
+  - idPrefix option is defined to prevent mixups between instances.
+  - 
 0.12.2 - 2016-07-11
 
   - Fixes subscriptions problem when there are no arguments passed to the publication

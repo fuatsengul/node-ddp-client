@@ -1,6 +1,6 @@
 {
-  "name": "xolvio-ddp",
-  "version": "0.12.3",
+  "name": "@fuatsengul/node-ddp-client",
+  "version": "0.13.0",
   "description": "Node.js module to connect to servers using DDP protocol.",
   "author": "Tom Coleman <tom@thesnail.org> (http://tom.thesnail.org)",
   "contributors": [
@@ -10,7 +10,8 @@
     "Chris Mather <mather.chris@gmail.com> (http://eventedmind.com)",
     "Tarang Patel",
     "Vaughn Iverson <vsivsi@yahoo.com>",
-    "Rony Kubat <rony@kubat.org>"
+    "Rony Kubat <rony@kubat.org>",
+    "Fuat Sengul"
   ],
   "license": "MIT/X11",
   "main": "lib/ddp-client",
@@ -21,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/xolvio/node-ddp-client"
+    "url": "https://github.com/fuatsengul/node-ddp-client"
   },
   "dependencies": {
     "bluebird": "^2.9.24",
